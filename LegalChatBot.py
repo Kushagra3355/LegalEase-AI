@@ -17,7 +17,7 @@ class LegalGraphChatBot:
         self,
         faiss_path: str = "faiss_index_legal",
         embedding_model: str = "text-embedding-3-small",
-        llm_model: str = "gpt-4o-mini",
+        llm_model: str = "gpt-5",
     ):
         self.retriever = BareActRetriever(faiss_path=faiss_path, model=embedding_model)
         self.llm = ChatOpenAI(model=llm_model)
@@ -71,4 +71,5 @@ class LegalGraphChatBot:
 
     def invoke(self, state: GraphState, query: str) -> GraphState:
         state["query"] = query
+
         return self.graph.invoke(state)
