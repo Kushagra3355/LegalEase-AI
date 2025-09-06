@@ -22,7 +22,7 @@ class DocumentQATool:
         self,
         faiss_path: str = "faiss_index_legal",
         embedding_model: str = "text-embedding-3-small",
-        llm_model: str = "gpt-4o-mini",
+        llm_model: str = "gpt-5",
     ):
         self.embedding_model = embedding_model
         self.retriever = BareActRetriever(faiss_path=faiss_path, model=embedding_model)
@@ -116,3 +116,4 @@ NEVER give legal advice. Always cite the Act or Section where possible."""
     def invoke(self, state: GraphState, query: str) -> GraphState:
         state["query"] = query
         return self.graph.invoke(state)
+
